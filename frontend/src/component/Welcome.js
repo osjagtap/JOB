@@ -18,34 +18,9 @@ import apiList from "../lib/apiList";
 import axios from "axios";
 import bgImage from "../../src/Assests/bg.jpeg";
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-const tutorialSteps = [
-	{
-		label: "San Francisco – Oakland Bay Bridge, United States",
-		imgPath:
-			"https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
-	},
-	{
-		label: "Bird",
-		imgPath:
-			"https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
-	},
-	{
-		label: "Bali, Indonesia",
-		imgPath:
-			"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80",
-	},
-	{
-		label: "NeONBRAND Digital Marketing, Las Vegas, United States",
-		imgPath:
-			"https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60",
-	},
-	{
-		label: "Goč, Serbia",
-		imgPath:
-			"https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
-	},
-];
+
+
+
 const Welcome = (props) => {
 	const useStyles = makeStyles((theme) => ({
 		root: {
@@ -80,20 +55,7 @@ const Welcome = (props) => {
 	const theme = useTheme();
 	const [jobs, setJobs] = useState([]);
 	const setPopup = useContext(SetPopupContext);
-	const [activeStep, setActiveStep] = React.useState(0);
-	const maxSteps = tutorialSteps.length;
-
-	const handleNext = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep + 1);
-	};
-
-	const handleBack = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep - 1);
-	};
-
-	const handleStepChange = (step) => {
-		setActiveStep(step);
-	};
+	
 	const onLoad = () => {
 		axios
 			.get(apiList.getJobs, {
@@ -133,7 +95,7 @@ const Welcome = (props) => {
 				</Grid>
 			</Grid>
 			<Grid container justify="center">
-				{jobs &&
+				{jobs  &&
 					jobs.map((job, index) => {
 						return (
 							<Grid item lg={10}>
@@ -148,7 +110,7 @@ const Welcome = (props) => {
 						);
 					})}
 			</Grid>
-			<Grid container justify="center">
+			{/* <Grid container justify="center">
 				<Grid item lg={12}>
 					<div className={classes.root}>
 						<Paper square elevation={0} className={classes.header}>
@@ -208,7 +170,7 @@ const Welcome = (props) => {
 						/>
 					</div>
 				</Grid>
-			</Grid>
+			</Grid> */}
 		</div>
 	);
 };

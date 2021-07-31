@@ -18,9 +18,6 @@ import apiList from "../lib/apiList";
 import axios from "axios";
 import bgImage from "../../src/Assests/bg.jpeg";
 
-
-
-
 const Welcome = (props) => {
 	const useStyles = makeStyles((theme) => ({
 		root: {
@@ -55,7 +52,7 @@ const Welcome = (props) => {
 	const theme = useTheme();
 	const [jobs, setJobs] = useState([]);
 	const setPopup = useContext(SetPopupContext);
-	
+
 	const onLoad = () => {
 		axios
 			.get(apiList.getJobs, {
@@ -95,7 +92,7 @@ const Welcome = (props) => {
 				</Grid>
 			</Grid>
 			<Grid container justify="center">
-				{jobs  &&
+				{jobs &&
 					jobs.map((job, index) => {
 						return (
 							<Grid item lg={10}>
@@ -110,67 +107,6 @@ const Welcome = (props) => {
 						);
 					})}
 			</Grid>
-			{/* <Grid container justify="center">
-				<Grid item lg={12}>
-					<div className={classes.root}>
-						<Paper square elevation={0} className={classes.header}>
-							<Typography>{tutorialSteps[activeStep].label}</Typography>
-						</Paper>
-						<AutoPlaySwipeableViews
-							axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-							index={activeStep}
-							onChangeIndex={handleStepChange}
-							enableMouseEvents
-						>
-							{tutorialSteps.map((step, index) => (
-								<div key={step.label}>
-									{Math.abs(activeStep - index) <= 2 ? (
-										<img
-											className={classes.img}
-											src={step.imgPath}
-											alt={step.label}
-										/>
-									) : null}
-								</div>
-							))}
-						</AutoPlaySwipeableViews>
-						<MobileStepper
-							steps={maxSteps}
-							position="static"
-							variant="text"
-							activeStep={activeStep}
-							nextButton={
-								<Button
-									size="small"
-									onClick={handleNext}
-									disabled={activeStep === maxSteps - 1}
-								>
-									Next
-									{theme.direction === "rtl" ? (
-										<KeyboardArrowLeft />
-									) : (
-										<KeyboardArrowRight />
-									)}
-								</Button>
-							}
-							backButton={
-								<Button
-									size="small"
-									onClick={handleBack}
-									disabled={activeStep === 0}
-								>
-									{theme.direction === "rtl" ? (
-										<KeyboardArrowRight />
-									) : (
-										<KeyboardArrowLeft />
-									)}
-									Back
-								</Button>
-							}
-						/>
-					</div>
-				</Grid>
-			</Grid> */}
 		</div>
 	);
 };

@@ -42,7 +42,6 @@ const CreateJobs = (props) => {
 			.substr(0, 16),
 		skillsets: [],
 		jobType: "Full Time",
-		jobPost: "SDE-1",
 		duration: 0,
 		salary: 0,
 	});
@@ -139,6 +138,9 @@ const CreateJobs = (props) => {
 										variant="outlined"
 										helperText="Press enter to add skills"
 										value={jobDetails.skillsets}
+										onChange={(event) => {
+											handleInput("skillsets", event.target.value);
+										}}
 										onAdd={(chip) =>
 											setJobDetails({
 												...jobDetails,
@@ -170,22 +172,6 @@ const CreateJobs = (props) => {
 										<MenuItem value="Full Time">Full Time</MenuItem>
 										<MenuItem value="Part Time">Part Time</MenuItem>
 										<MenuItem value="Work From Home">Work From Home</MenuItem>
-									</TextField>
-								</Grid>
-								<Grid item>
-									<TextField
-										select
-										label="Job Post"
-										variant="outlined"
-										value={jobDetails.jobPost}
-										onChange={(event) => {
-											handleInput("jobPost", event.target.value);
-										}}
-										fullWidth
-									>
-										<MenuItem value="Full Time">SDE-1</MenuItem>
-										<MenuItem value="Part Time">SDE-2</MenuItem>
-										<MenuItem value="Work From Home">SDE-3</MenuItem>
 									</TextField>
 								</Grid>
 								<Grid item>

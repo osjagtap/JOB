@@ -1,4 +1,5 @@
 import React from "react";
+import isAuth from "../lib/isAuth";
 import { makeStyles } from "@material-ui/core/styles";
 import {
 	Card,
@@ -6,11 +7,16 @@ import {
 	Typography,
 	CardActions,
 	Button,
+	Tooltip,
 } from "@material-ui/core";
-
+import AddIcon from "@material-ui/icons/Add";
+import Fab from "@material-ui/core/Fab";
 const useStyles = makeStyles({
 	cardContainer: {
-		minHeight: "200px",
+		minHeight: "250px",
+	},
+	cardContent : {
+		minHeight: "150px",
 	},
 	details: {
 		fontSize: 14,
@@ -24,7 +30,7 @@ export default function JobCard(props) {
 	const classes = useStyles();
 	return (
 		<Card className={classes.cardContainer}>
-			<CardContent>
+			<CardContent className={classes.cardContent}>
 				<Typography variant="h5" component="h2">
 					{props.title}
 				</Typography>
@@ -58,9 +64,15 @@ export default function JobCard(props) {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button variant="contained" disabled>
-					Apply
-				</Button>
+				<Tooltip
+					title="Login First!"
+					aria-label="Login First!"
+					placement="right"
+				>
+					<Button variant="contained" color="default">
+						Apply
+					</Button>
+				</Tooltip>
 			</CardActions>
 		</Card>
 	);

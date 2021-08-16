@@ -338,6 +338,7 @@ router.get("/user", jwtAuth, (req, res) => {
 					});
 					return;
 				}
+				console.log(JSON.stringify(recruiter));
 				res.json(recruiter);
 			})
 			.catch((err) => {
@@ -422,11 +423,17 @@ router.put("/user", jwtAuth, (req, res) => {
 				if (data.name) {
 					recruiter.name = data.name;
 				}
+				if (data.achievements) {
+					recruiter.achievements = data.achievements;
+				}
 				if (data.contactNumber) {
 					recruiter.contactNumber = data.contactNumber;
 				}
 				if (data.bio) {
 					recruiter.bio = data.bio;
+				}
+				if (data.progress) {
+					recruiter.progress = data.progress;
 				}
 				recruiter
 					.save()
